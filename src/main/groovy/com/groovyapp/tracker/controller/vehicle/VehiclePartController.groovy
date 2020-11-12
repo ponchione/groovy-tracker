@@ -18,7 +18,6 @@ class VehiclePartController extends BaseController {
 
     @GetMapping("/all")
     List<VehiclePartDTO> getAllParts() {
-//        service.getAllParts()
         service.allParts //property? what?
     }
 
@@ -35,5 +34,10 @@ class VehiclePartController extends BaseController {
     @PostMapping("/add")
     void addPart(@RequestBody VehiclePartDTO partDTO) {
         service.addPart(partDTO)
+    }
+
+    @PostMapping("/add/bulk")
+    void addParts(@RequestBody List<VehiclePartDTO> dtoList) {
+       service.addParts(dtoList)
     }
 }

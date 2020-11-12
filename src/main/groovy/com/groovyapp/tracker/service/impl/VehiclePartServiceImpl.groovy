@@ -1,6 +1,7 @@
 package com.groovyapp.tracker.service.impl
 
 import com.groovyapp.tracker.DTO.VehiclePartDTO
+import com.groovyapp.tracker.model.VehiclePart
 import com.groovyapp.tracker.repository.VehiclePartRepository
 import com.groovyapp.tracker.service.VehiclePartService
 import com.groovyapp.tracker.util.VehiclePartMapping
@@ -10,17 +11,13 @@ import org.springframework.stereotype.Service
 @Service
 class VehiclePartServiceImpl implements VehiclePartMapping, VehiclePartService {
 
-//    def mapper = new VehiclePartMapper()
-
     @Autowired
     private VehiclePartRepository repository
 
     @Override
     List<VehiclePartDTO> getAllParts() {
-//        mapper.mapToPartDtoList()
-        map(repository.findAll())
+        map(repository.findAll()) as List<VehiclePartDTO>
     }
-
 
     @Override
     VehiclePartDTO getPartByID(long id) {
@@ -33,10 +30,17 @@ class VehiclePartServiceImpl implements VehiclePartMapping, VehiclePartService {
         ) as VehiclePartDTO
     }
 
+    @Override
     void addPart(VehiclePartDTO partDTO) {
-//        mapper.mapToPart(repository.save(partDTO))
+        repository.save(map(partDTO) as VehiclePart)
+    }
+
+    @Override
+    void addParts(List<VehiclePartDTO> parts) {
+        repository.saveAll(map(parts) as List<VehiclePart>)
     }
 
 
+    //TODO not sure why I have to cast everything after it comes out of the mapper...
 
 }

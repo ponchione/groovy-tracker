@@ -35,7 +35,7 @@ trait VehiclePartMapping {
     }
 
     static def toPartDto(part) {
-        newPart(part)
+        newPart(part) as VehiclePartDTO
     }
 
     static def toPartList(parts) {
@@ -67,6 +67,6 @@ trait VehiclePartMapping {
                 price: new BigDecimal(part.price.toString()),
                 url: part.url
         )
-    }//END
+    }
 
 }//END Trait
