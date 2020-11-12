@@ -1,7 +1,8 @@
 package com.groovyapp.tracker.service
 
-import com.groovyapp.tracker.model.VehiclePart
+import com.groovyapp.tracker.DTO.VehiclePartDTO
 
 interface VehiclePartService {
-    List<VehiclePart> getAllParts()
+    List<VehiclePartDTO> getAllParts()
+    VehiclePartDTO getPartByID(long id)
 }

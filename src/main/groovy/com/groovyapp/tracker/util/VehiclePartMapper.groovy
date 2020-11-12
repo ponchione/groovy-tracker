@@ -5,6 +5,15 @@ import com.groovyapp.tracker.model.VehiclePart
 
 class VehiclePartMapper {
 
+    //Generic method to accept either incoming and calls appropriate method
+    static def map(def incoming) {
+        if (incoming instanceof VehiclePartDTO) {
+            mapToPartDto(incoming)
+        } else {
+            mapToPartDtoList(incoming)
+        }
+    }
+
     static def mapToPartDto(VehiclePart part) {
         new VehiclePartDTO(
                 id: part.id as long,
@@ -23,7 +32,7 @@ class VehiclePartMapper {
             dtoList << mapToPartDto(part)
         }
 
-        parts
+        dtoList
     }
 
 }

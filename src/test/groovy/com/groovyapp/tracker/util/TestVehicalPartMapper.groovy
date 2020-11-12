@@ -20,6 +20,7 @@ class TestVehiclePartMapper {
         )
     }
 
+    //TODO finish these
     @Test
     void testMapToPartDto() {
         def part = createPart()
