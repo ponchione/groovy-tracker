@@ -9,9 +9,9 @@ import javax.validation.constraints.Positive
 
 class VehiclePartDTO {
 
-    @NotEmpty
-    @NotBlank
-    @JsonProperty(required = true)
+//    @NotEmpty
+//    @NotBlank
+    @JsonProperty(required = false)
     long id
 
     @NotEmpty
